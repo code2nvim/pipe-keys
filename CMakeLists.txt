@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 4.1)
+# set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD
+#   # This specific value changes as experimental support evolves. See
+#   # `Help/dev/experimental.rst` in the CMake source corresponding to
+#   # your CMake build for the exact value to use.
+#   "d0edc3af-4c50-42ea-a356-e2862fe7a444")
+# set(CMAKE_CXX_MODULE_STD ON)
+project(pipe-keys LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 26)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(COMPILE_WARNING_AS_ERROR ON)
+add_compile_options(-Wall -Wextra -Wpedantic)
+
+add_executable(pipe-keys src/main.cpp)
+
+add_library(std STATIC)
+target_link_libraries(pipe-keys PRIVATE std)
+
+target_sources(std
+  PUBLIC
+    FILE_SET CXX_MODULES FILES
+      std.cc) # in .gitignore, check README.md
+add_compile_options(-Wno-reserved-module-identifier)
