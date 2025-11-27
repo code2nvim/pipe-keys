@@ -1,19 +1,7 @@
-// main.cpp
+import window;
 
-import input;
-
-import std;
-
-auto main() -> int
+auto main(int argc, char* argv[]) -> int
 {
-    try {
-        std::println("pipe-keys");
-        for (auto input : app::input()) {
-            if (input.key != "") {
-                std::println("{}", std::move(input.key));
-            }
-        }
-    } catch (...) {
-        return 1;
-    }
+    auto app = app::Application::create("pipe-keys");
+    app->make_window_and_run<app::Window>(argc, argv);
 }

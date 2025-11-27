@@ -1,11 +1,12 @@
 module;
 
+#include <functional>
+#include <memory>
+
 #include <libinput.h>
 #include <libudev.h>
 
 export module input:resource;
-
-import std;
 
 namespace app {
 

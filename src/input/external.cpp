@@ -1,24 +1,26 @@
 module;
 
+#include <cstdlib>
+
 #include <fcntl.h>
 #include <sys/poll.h>
 #include <unistd.h>
 
 export module input:external;
 
-import std;
+namespace {
+
+// NOLINTBEGIN
+extern "C" {
+auto poll(struct pollfd* _fds, nfds_t _nfds, int _timeout) -> int;
+auto open(const char* _file, int _oflag, ...) -> int;
+auto close(int _fd) -> int;
+}
+// NOLINTEND
+
+}
 
 namespace app {
-
-namespace {
-    extern "C" {
-    // NOLINTBEGIN
-    auto poll(struct pollfd* _fds, nfds_t _nfds, int _timeout) -> int;
-    auto open(const char* _file, int _oflag, ...) -> int;
-    auto close(int _fd) -> int;
-    // NOLINTEND
-    }
-}
 
 export using pollfd = pollfd;
 

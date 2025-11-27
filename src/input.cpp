@@ -1,5 +1,7 @@
 module;
 
+#include <generator>
+
 #include <libinput.h>
 
 export module input;
@@ -8,8 +10,6 @@ import :data;
 import :event;
 import :external;
 import :resource;
-
-import std;
 
 namespace app {
 

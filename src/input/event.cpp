@@ -1,5 +1,10 @@
 module;
 
+#include <format>
+#include <string>
+#include <string_view>
+#include <tuple>
+
 #include <libevdev/libevdev.h>
 #include <libinput.h>
 
@@ -7,8 +12,6 @@ export module input:event;
 
 import :data;
 import :resource;
-
-import std;
 
 namespace app {
 

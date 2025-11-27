@@ -1,8 +1,8 @@
 module;
 
-export module input:data;
+#include <string>
 
-import std;
+export module input:data;
 
 namespace app {
 
