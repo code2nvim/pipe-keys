@@ -1,5 +1,2 @@
 build/
 .cache/
-gui/*
-gui/!index.html
-gui/!*js
