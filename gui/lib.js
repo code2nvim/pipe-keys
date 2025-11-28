@@ -1,30 +1,37 @@
+// @ts-check
 import htm from "./lib/htm.js";
 import { h, render } from "./lib/preact.js";
 
 export const html = htm.bind(h);
 
-export function identify(component) {
+/**
+ * @param {Function} Component
+ */
+export function identify(Component) {
   // FooBar -> foo-bar
-  const id = component.name
+  const id = Component.name
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
 
   return html`
-    <div id="${id}" class="contents"><${component} /></div>
+    <div id="${id}" class="contents"><${Component} /></div>
   `;
 }
 
-export function update(component) {
+/**
+ * @param {Function} Component
+ */
+export function update(Component) {
   // FooBar -> foo-bar
-  const id = component.name
+  const id = Component.name
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
 
   render(
     html`
-      <${component} />
+      <${Component} />
     `,
     document.getElementById(id),
   );

@@ -1,8 +1,11 @@
+// @ts-check
 import "./App.js";
 import { Input, input } from "./Input.js";
 import { update } from "./lib.js";
 
-// webkit_web_view_evaluate_javascript
+/**
+ * @param {string} content
+ */
 export function load(content) {
   input.content = content;
   update(Input);
