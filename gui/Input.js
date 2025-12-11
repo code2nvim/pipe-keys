@@ -1,15 +1,30 @@
 // @ts-check
 import { html } from "./lib.js";
+import { signal } from "./lib/signals.js";
 
-export const input = {
-  content: "default",
-  visible: true,
-};
+/** @type {{ value: string[] }} */
+const inputList = signal(["default-0", "default-1"]);
+
+/**
+ * @param {string} input
+ */
+export function newInput(input) {
+  inputList.value.push(input);
+}
+
+/** @type {{ value: boolean }} */
+export const visible = signal(true);
 
 export function Input() {
   return html`
     <p class="grid place-self-center text-white underline">
-      ${input.visible && input.content}
+      ${visible.value &&
+        inputList.value.map(
+          (/** @type {string} */ input) =>
+            html`
+              <div>${input}</div>
+            `,
+        )}
     </p>
   `;
 }

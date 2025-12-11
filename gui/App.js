@@ -1,15 +1,23 @@
 // @ts-check
+
+/// <reference lib="dom" />
 import { Input } from "./Input.js";
-import { html, identify, update } from "./lib.js";
+import { html } from "./lib.js";
+import { render } from "./lib/preact.js";
 import { Toggle } from "./Toggle.js";
 
 export function App() {
   return html`
     <div class="absolute grid size-full bg-black">
-      ${identify(Input)}<!--fmt-->
-      ${identify(Toggle)}<!--fmt-->
+      <${Input} />
+      <${Toggle} />
     </div>
   `;
 }
 
-update(App);
+render(
+  html`
+    <${App} />
+  `,
+  document.getElementById("app"),
+);

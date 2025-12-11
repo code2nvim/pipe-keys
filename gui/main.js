@@ -1,12 +1,8 @@
 // @ts-check
 import "./App.js";
-import { Input, input } from "./Input.js";
-import { update } from "./lib.js";
+import {} from "./Input.js";
 
 /**
  * @param {string} content
  */
-export function load(content) {
-  input.content = content;
-  update(Input);
-}
+export function load(content) {}
