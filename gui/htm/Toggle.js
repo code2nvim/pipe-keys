@@ -1,6 +1,6 @@
 // @ts-check
+import { html } from "../lib.js";
 import { visible } from "./Input.js";
-import { html } from "./lib.js";
 
 export function Toggle() {
   const handleClick = () => (visible.value = !visible.value);

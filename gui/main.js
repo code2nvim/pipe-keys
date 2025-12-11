@@ -1,10 +1,12 @@
 // @ts-check
-import "./App.js";
-import { pushInput } from "./Input.js";
+import "./htm/App.js";
+import { pushInput } from "./htm/Input.js";
 
 /**
  * @param {string} content
  */
 export function load(content) {
-  pushInput(content);
+  /** @type import("./data.js").Data */
+  const data = JSON.parse(content);
+  pushInput(data.key);
 }

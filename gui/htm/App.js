@@ -1,9 +1,8 @@
 // @ts-check
 
 /// <reference lib="dom" />
+import { html, render } from "../lib.js";
 import { Input } from "./Input.js";
-import { html } from "./lib.js";
-import { render } from "./lib/preact.js";
 import { Toggle } from "./Toggle.js";
 
 export function App() {

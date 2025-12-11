@@ -13,6 +13,7 @@ export module window;
 
 import :external;
 
+import data;
 import input;
 
 namespace app {
@@ -59,9 +60,11 @@ private:
         while (!loaded_) {
             // wait
         }
-        for (auto [key] : app::input()) {
+        for (const auto& data : app::input()) {
+            auto content = app::to_string(data);
+            std::println("{}", content);
             web_view_.evaluate_javascript(
-                std::format("load(\"{}\")", std::move(key)));
+                std::format("load('{}')", std::move(content)));
         }
     }
 };

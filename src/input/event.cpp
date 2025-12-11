@@ -10,7 +10,8 @@ module;
 
 export module input:event;
 
-import :data;
+import data;
+
 import :resource;
 
 namespace app {

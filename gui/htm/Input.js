@@ -1,6 +1,5 @@
 // @ts-check
-import { html } from "./lib.js";
-import { signal } from "./lib/signals.js";
+import { html, signal } from "../lib.js";
 
 /** @type {{ value: string[] }} */
 const inputList = signal(["default-0", "default-1"]);

@@ -6,7 +6,8 @@ module;
 
 export module input;
 
-import :data;
+import data;
+
 import :event;
 import :external;
 import :resource;
