@@ -8,8 +8,8 @@ const inputList = signal(["default-0", "default-1"]);
 /**
  * @param {string} input
  */
-export function newInput(input) {
-  inputList.value.push(input);
+export function pushInput(input) {
+  inputList.value = [...inputList.value, input].slice(-15);
 }
 
 /** @type {{ value: boolean }} */
