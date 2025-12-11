@@ -1,7 +1,7 @@
 // @ts-check
 import { html, signal } from "../lib.js";
 
-/** @type {{ value: string[] }} */
+/** @type import("../lib.js").Signal<string[]> */
 const inputList = signal(["default-0", "default-1"]);
 
 /**
@@ -11,7 +11,7 @@ export function pushInput(input) {
   inputList.value = [...inputList.value, input].slice(-15);
 }
 
-/** @type {{ value: boolean }} */
+/** @type import("../lib.js").Signal<boolean> */
 export const visible = signal(true);
 
 export function Input() {
@@ -19,7 +19,7 @@ export function Input() {
     <p class="grid place-self-center text-white underline">
       ${visible.value &&
         inputList.value.map(
-          (/** @type {string} */ input) =>
+          (input) =>
             html`
               <div>${input}</div>
             `,
