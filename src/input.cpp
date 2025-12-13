@@ -25,7 +25,7 @@ namespace {
         case LIBINPUT_EVENT_POINTER_MOTION:
             return app::pointer_motion(event);
         default:
-            return app::data { .key = "" };
+            return app::data { .hold = false, .type = "undefined", .name = "undefined" };
         }
     }
 }

@@ -25,8 +25,9 @@ export auto keyboard_key(const app::event_ptr& event) -> app::data
     };
     switch (libinput_event_keyboard_get_key_state(keyboard)) {
     case LIBINPUT_KEY_STATE_PRESSED:
+        return app::data { .hold = true, .type = "KEY", .name = name };
     case LIBINPUT_KEY_STATE_RELEASED:
-        return app::data { .key = name };
+        return app::data { .hold = false, .type = "KEY", .name = name };
     };
 }
 
@@ -39,8 +40,9 @@ export auto pointer_button(const app::event_ptr& event) -> app::data
     };
     switch (libinput_event_pointer_get_button_state(pointer)) {
     case LIBINPUT_BUTTON_STATE_PRESSED:
+        return app::data { .hold = true, .type = "BTN", .name = name };
     case LIBINPUT_BUTTON_STATE_RELEASED:
-        return app::data { .key = name };
+        return app::data { .hold = false, .type = "BTN", .name = name };
     };
 }
 
@@ -74,11 +76,15 @@ export auto pointer_motion(const app::event_ptr& event) -> app::data
             return " ";
         };
     };
-    return app::data { .key = std::format("{}",
-                           arrow((mov_x < 0.0 ? 0b1000 : 0b0000)
-                               | (mov_y < 0.0 ? 0b0100 : 0b0000)
-                               | (mov_x > 0.0 ? 0b0010 : 0b0000)
-                               | (mov_y > 0.0 ? 0b0001 : 0b0000))) };
+    return app::data {
+        .hold = false,
+        .type = "REL",
+        .name = std::format("{}",
+            arrow((mov_x < 0.0 ? 0b1000 : 0b0000)
+                | (mov_y < 0.0 ? 0b0100 : 0b0000)
+                | (mov_x > 0.0 ? 0b0010 : 0b0000)
+                | (mov_y > 0.0 ? 0b0001 : 0b0000)))
+    };
     // NOLINTEND
 }
 

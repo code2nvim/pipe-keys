@@ -60,6 +60,7 @@ target_link_libraries(pipe-keys
 target_sources(data
   PUBLIC
     FILE_SET CXX_MODULES FILES
+      src/data/code.cpp
       src/data.cpp)
 
 target_sources(input

@@ -1,4 +1,6 @@
 /**
  * @typedef {Object} Data
- * @property {string} key
+ * @property {boolean} hold
+ * @property {string} type
+ * @property {string} name
  */
